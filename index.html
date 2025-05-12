@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html lang="ar">
-<head>
-  <meta charset="UTF-8" />
-  <title>إعادة تعيين كلمة المرور</title>
-  <style>
-    body { font-family: Arial; background: #f8f9fa; text-align: center; padding: 50px; }
-    h2 { color: #1abc9c; }
-    input, button {
-      padding: 12px; font-size: 16px; border-radius: 8px; margin-top: 10px;
-    }
-    button { background-color: #1abc9c; color: white; border: none; }
-  </style>
-</head>
-<body>
-  <h2>إعادة تعيين كلمة المرور 🔒</h2>
-  <p>من فضلك أدخل كلمة المرور الجديدة</p>
-  <input type="password" id="new-password" placeholder="كلمة المرور الجديدة" />
-  <br />
-  <button onclick="resetPassword()">حفظ</button>
-
-  <script src="https://unpkg.com/@supabase/supabase-js"></script>
-  <script>
-    const supabase = supabase.createClient(
-      'https://xzopbczkulvliijakfex.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6b3BiY3prdWx2bGlpamFrZmV4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxMzA5NTksImV4cCI6MjA1ODcwNjk1OX0.0_OhBYEs2PIakiVrtXn-5Stf83gJpbrEXxCUYEmlsQA'
-    );
-
-    async function resetPassword() {
-      const newPassword = document.getElementById('new-password').value;
-      const { error } = await supabase.auth.updateUser({ password: newPassword });
-
-      if (error) {
-        alert("حدث خطأ: " + error.message);
-      } else {
-        alert("✅ تم تحديث كلمة المرور بنجاح");
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تم تأكيد البريد</title>
+    <style>
+      body {
+        background-color: #f5f7fa;
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        direction: rtl;
       }
-    }
-  </script>
-</body>
+      .card {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 400px;
+      }
+      h2 {
+        color: #1abc9c;
+        margin-bottom: 16px;
+      }
+      p {
+        color: #555;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .button {
+        background-color: #1abc9c;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        text-decoration: none;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>تم تأكيد البريد بنجاح ✅</h2>
+      <p>يمكنك الآن الرجوع إلى التطبيق ومتابعة الاستخدام.</p>
+      <a class="button" href="https://expo.dev">العودة للتطبيق</a>
+    </div>
+  </body>
 </html>
